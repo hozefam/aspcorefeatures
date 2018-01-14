@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Accountant.Api.Repositories;
+using Accountant.Api.Settings;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,8 @@ namespace Accountant.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.Configure<AppSettings>(Configuration.GetSection("app"));
             //Dependency Injection - using built in DI
             // services.AddScoped<IUserRepository, UserRepository>();  
 
