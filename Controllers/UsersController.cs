@@ -1,10 +1,12 @@
 using System.Linq;
+using Accountant.Api.Filters;
 using Accountant.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Accountant.Api.Controllers
 {
     [Route("[controller]")]
+    [ExceptionHandler]
     public class UsersController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -20,6 +22,7 @@ namespace Accountant.Api.Controllers
         [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
+            throw new System.Exception("Oops....");
             var user = _userRepository.GetUser(name);
             if(user == null)
             {
