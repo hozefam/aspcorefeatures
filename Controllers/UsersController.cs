@@ -9,9 +9,9 @@ namespace Accountant.Api.Controllers
     {
         private readonly IUserRepository _userRepository;
 
-        public UsersController()
+        public UsersController(IUserRepository userRepository)
         {
-            _userRepository = new UserRepository();
+            _userRepository = userRepository;
         }
 
         [HttpGet]
